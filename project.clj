@@ -10,7 +10,8 @@
                  [org.clojure/clojurescript "1.9.229"]
                  [org.clojure/core.async "0.2.395"
                   :exclusions [org.clojure/tools.reader]]
-                 [cljs-ajax "0.5.8"]]
+                 [cljs-ajax "0.5.8"]
+                 [integrant "0.2.2"]]
 
   :plugins [[lein-figwheel "0.5.9"]
             [lein-cljsbuild "1.1.5" :exclusions [[org.clojure/clojure]]]]
@@ -23,10 +24,10 @@
               [{:id "dev"
                 :source-paths ["src"]
 
-                :figwheel {:on-jsload "silly.core/on-js-reload"
+                :figwheel {:on-jsload "silly.main/on-js-reload"
                            :open-urls ["http://localhost:3449/index.html"]}
 
-                :compiler {:main silly.core
+                :compiler {:main silly.main
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/silly.js"
                            :output-dir "resources/public/js/compiled/out"
@@ -35,7 +36,7 @@
                {:id "min"
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/silly.js"
-                           :main silly.core
+                           :main silly.main
                            :optimizations :advanced
                            :pretty-print false}}]}
 
