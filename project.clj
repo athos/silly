@@ -7,7 +7,7 @@
   :min-lein-version "2.7.1"
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.229"]
+                 [org.clojure/clojurescript "1.9.473"]
                  [org.clojure/core.async "0.2.395"
                   :exclusions [org.clojure/tools.reader]]
                  [cljs-ajax "0.5.8"]
@@ -31,13 +31,16 @@
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/silly.js"
                            :output-dir "resources/public/js/compiled/out"
+                           :infer-externs true
                            :source-map-timestamp true
+                           :optimizations :none
                            :preloads [devtools.preload]}}
                {:id "min"
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/silly.js"
                            :main silly.main
                            :optimizations :advanced
+                           :infer-externs true
                            :pretty-print false}}]}
 
   :figwheel {:css-dirs ["resources/public/css"] ;; watch and update CSS
